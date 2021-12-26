@@ -10,6 +10,9 @@ This goes into two other function nodes and is formatted so that it can be sent 
 is just **Docker**. All resources used were deploying using docker-compose, and influxdb buckets are automatically provisioned using the docker_influxdb_init feature. **Ansible** automatically installs Jenkins. **Jenkins** checks for push requests and automatically builds and runs containers depending on what branch it is pushed to and allows the ability to destroy based on input.
 
 # Problems I Encountered
+- Had some problems with Ansible and installing jenkins due to ssh problems supposedly you need to add something to ansible.cfg for example ``` [defaults]
+user = ubuntu
+private_key_file =  ~/.ssh/YOUR_KEY```
 - First time sending information to InfluxDB I ran into some ```  unsupported input type for mean aggregate: string ``` error due to the query aggregate defaulting to mean. To display strings just set the query aggregate to last.
 - Getting the dots to be connected in my InfluxDB graph was confusing since, the solution was to make everything the same query by removing the match id and placing it into another bucket
 - I also wanted to implement a counter but nodered resets the variable everytime the timestamp is pressed or the nodes are redeployed. To fix this I implemented this ``` var local=context.get('data') || {};
