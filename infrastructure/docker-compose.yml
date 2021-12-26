@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+    nodered:
+        container_name: nodered
+        build: ./nodered
+        ports:
+            - "1880:1880"
+        volumes:
+            - type: volume
+              source: nodered-vol
+              target: /data
+        environment:
+            - INFLUXDB_TOKEN=arontoken
+    influxdb:
+        container_name: influxdb
+        build: ./influxdb/
+        ports:
+            - "8086:8086"
+        volumes:
+            - type: volume
+              source: influxdb-vol
+              target: /var/lib/influxdb2
+        environment:
+            - DOCKER_INFLUXDB_INIT_MODE=setup
+            - DOCKER_INFLUXDB_INIT_USERNAME=aron
+            - DOCKER_INFLUXDB_INIT_PASSWORD=SlendermanXDZ_123
+            - DOCKER_INFLUXDB_INIT_ORG=aron
+            - DOCKER_INFLUXDB_INIT_BUCKET=lolbucket
+            - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=arontoken
+    grafana:
+        container_name: grafana
+        build: ./grafana/
+        ports:
+            - "3000:3000"
+        volumes:
+            - type: volume
+              source: grafana-vol
+              target: /var/lib/grafana
+        environment:
+            - GF_SECURITY_ADMIN_USER=aron
+            - GF_SECURITY_ADMIN_PASSWORD=SlendermanXDZ_123
+            
+volumes:
+    nodered-vol: {}
+    influxdb-vol: {}
+    grafana-vol: {}

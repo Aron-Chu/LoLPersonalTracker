@@ -1,0 +1,14 @@
+apiVersion: 1
+
+datasources:
+  - name: influxdb
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    editable: true
+    secureJsonData:
+      token: arontoken
+    jsonData:
+      version: Flux
+      organization: aron
+      defaultBucket: lolbucket
