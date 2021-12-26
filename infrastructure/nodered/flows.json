@@ -7,6 +7,20 @@
         "info": ""
     },
     {
+        "id": "a2171a3cc8c263fb",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "influxdb",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://influxdb:8086",
+        "rejectUnauthorized": true
+    },
+    {
         "id": "64473a2534b2ab78",
         "type": "http request",
         "z": "f6f2187d.f17ca8",
@@ -14,7 +28,7 @@
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/{{payload}}/ids?start=0&count=20&api_key=<replace>",
+        "url": "https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/{{payload}}/ids?start=0&count=20&api_key=RGAPI-9f441bcd-6711-43c9-a2f2-aa12b70adb6d",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -203,37 +217,6 @@
         ]
     },
     {
-        "id": "4c4fa40523b16348",
-        "type": "http in",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "url": "/route",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 190,
-        "y": 240,
-        "wires": [
-            [
-                "f1758431436eb584",
-                "f7ba5c12019c2a0f"
-            ]
-        ]
-    },
-    {
-        "id": "f1758431436eb584",
-        "type": "http response",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "statusCode": "",
-        "headers": {
-            "content-type": "text/plain"
-        },
-        "x": 370,
-        "y": 160,
-        "wires": []
-    },
-    {
         "id": "fcd35474ccc3eb58",
         "type": "http request",
         "z": "f6f2187d.f17ca8",
@@ -241,7 +224,7 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{{payload}}?api_key=<replace>",
+        "url": "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{{payload}}?api_key=RGAPI-9f441bcd-6711-43c9-a2f2-aa12b70adb6d",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -251,8 +234,8 @@
         "y": 280,
         "wires": [
             [
-                "3c9f511f3737f9e4",
-                "3db9658b0be906fb"
+                "3db9658b0be906fb",
+                "3c9f511f3737f9e4"
             ]
         ]
     },
@@ -336,7 +319,7 @@
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "https://americas.api.riotgames.com/lol/match/v5/matches/{{payload}}?api_key=<apikey>",
+        "url": "https://americas.api.riotgames.com/lol/match/v5/matches/{{payload}}?api_key=RGAPI-9f441bcd-6711-43c9-a2f2-aa12b70adb6d",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -351,17 +334,34 @@
         ]
     },
     {
-        "id": "a2171a3cc8c263fb",
-        "type": "influxdb",
-        "hostname": "127.0.0.1",
-        "port": "8086",
-        "protocol": "http",
-        "database": "database",
-        "name": "influxdb",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://influxdb:8086",
-        "rejectUnauthorized": true
+        "id": "4c4fa40523b16348",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/route",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 240,
+        "wires": [
+            [
+                "f1758431436eb584",
+                "f7ba5c12019c2a0f"
+            ]
+        ]
+    },
+    {
+        "id": "f1758431436eb584",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {
+            "content-type": "text/plain"
+        },
+        "x": 370,
+        "y": 160,
+        "wires": []
     }
 ]
