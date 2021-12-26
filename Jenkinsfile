@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
          steps {
             dir('infrastructure') {
-                 sh 'cat $BRANCH_NAME'
+                 echo '$BRANCH_NAME'
                  sh 'docker-compose build'
                 }
             }
