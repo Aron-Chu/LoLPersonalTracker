@@ -1,16 +1,10 @@
 pipeline {
     agent any 
     stages {
-        stage('CD') {
-            steps {
-                sh 'cd infrastructure'
-                sh 'ls'
-            }
-        }
         stage('Build') {
-            steps {
-                sh 'docker-compose build'
-                }
+            dir('infrastructure') {
+                 sh 'docker-compose build'
+            }
         }
         stage('Run') {
             steps {
