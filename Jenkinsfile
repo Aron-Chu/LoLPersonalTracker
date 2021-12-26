@@ -9,13 +9,17 @@ pipeline {
             }
         }
         stage('Run') {
-            steps {
-                sh 'docker-compose up -d'
+         steps {
+            dir('infrastructure') {
+                 sh 'docker-compose up -d'
+                }
             }
         }
         stage('Destroy') {
-            steps {
-             sh 'docker-compose down -v'
+         steps {
+            dir('infrastructure') {
+                 sh 'docker-compose down -v'
+                }
             }
         }
     }
