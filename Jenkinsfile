@@ -30,10 +30,6 @@ pipeline {
             }
         }
         stage('Validate Destroy') {
-            when {
-                beforeInput true
-                branch "dev"
-            }
             input {
                 message "Do you want to destroy these containers?"
                 ok "Destroy containers."
