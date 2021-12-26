@@ -11,7 +11,7 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
-        stage('Destroy) {
+        stage('Destroy') {
             steps {
              sh 'docker-compose down -v'
             }
