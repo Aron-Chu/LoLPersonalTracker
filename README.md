@@ -7,9 +7,12 @@ can read the information. The get request accepts the information by modifying i
 returns a 30,000 line JSON object that I then break down to only include a specific player. I then send this to rate limiter node that restricts the message rate to 1 payload per minute so that
 the values are not all in the same time queries. The object returned will be the msg.payload.info.participants[i] object which will only be statistics about a single user.
 This goes into two other function nodes and is formatted so that it can be sent to **InfluxDB**. InfluxDB has two buckets, one storing statistics, and the other storing the match id and champion name. If needed, I can also choose to display single statistics on **Grafana**. The environment used
-is just **Docker**. All resources used were deploying using docker-compose, and influxdb buckets are automatically provisioned using the docker_influxdb_init feature. 
+is just **Docker**. All resources used were deploying using docker-compose, and influxdb buckets are automatically provisioned using the docker_influxdb_init feature. **Ansible** automatically installs Jenkins. **Jenkins** checks for push requests and automatically builds and runs containers depending on what branch it is pushed to and allows the ability to destroy based on input.
 
 # Problems I Encountered
+- Had some problems with Ansible and installing jenkins due to ssh problems supposedly you need to add something to ansible.cfg for example ``` [defaults]
+user = ubuntu
+private_key_file =  ~/.ssh/YOUR_KEY```
 - First time sending information to InfluxDB I ran into some ```  unsupported input type for mean aggregate: string ``` error due to the query aggregate defaulting to mean. To display strings just set the query aggregate to last.
 - Getting the dots to be connected in my InfluxDB graph was confusing since, the solution was to make everything the same query by removing the match id and placing it into another bucket
 - I also wanted to implement a counter but nodered resets the variable everytime the timestamp is pressed or the nodes are redeployed. To fix this I implemented this ``` var local=context.get('data') || {};
@@ -66,6 +69,9 @@ https://docs.docker.com/compose/install/
 ![](riotss/influxdb2.png)
 ![](riotss/influxdb3.png)
 ![](riotss/d541d28a20d9cad3e7c51bfea00cc600.png)
+![](riotss/main.png)
+![](riotss/dev.png)
+
 
 
 
