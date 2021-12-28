@@ -20,6 +20,7 @@ pipeline {
             }
             steps {
                 echo 'Run Accepted'
+                chmod 777 /var/run/docker.sock
             }   
         }
         stage('Run') {
