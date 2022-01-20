@@ -8,7 +8,6 @@ pipeline {
         stage('Build') {
          steps {
             dir('infrastructure') {
-                 echo '$BRANCH_NAME'
                  sh 'docker-compose build'
                 }
             }
