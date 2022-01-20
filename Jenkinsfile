@@ -25,8 +25,7 @@ pipeline {
                  sh 'docker push girthquake1/influxdb'
                  
                 }
-            
-        
+            }
         }
         
         stage('Validate Run') {
