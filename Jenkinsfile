@@ -8,6 +8,7 @@ pipeline {
         stage('Build') {
          steps {
             dir('infrastructure') {
+                 echo '$BRANCH_NAME'
                  sh 'docker-compose build'
                 }
             }
@@ -26,7 +27,6 @@ pipeline {
                 }
             }
         }
-        
         stage('Validate Run') {
             when {
                 beforeInput true
