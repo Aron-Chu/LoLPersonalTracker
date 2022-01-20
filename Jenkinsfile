@@ -1,5 +1,9 @@
 pipeline {
     agent any 
+    environment {
+        DOCKER_ID = credentials('DOCKER_ID')
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+    }
     stages {
         stage('Build') {
          steps {
@@ -9,6 +13,22 @@ pipeline {
                 }
             }
         }
+        stage('Push') {
+            steps {
+                dir('infrastructure') {
+                 sh 'docker login -u $DOCKER_ID -p $DOCKER_PASSWORD'
+                 sh 'docker push girthquake1/infrastructure_grafana'
+                 sh 'docker push girthquake1/infrastructure_influxdb'
+                 sh 'docker push girthquake1/infrastructure_nodered'
+                 sh 'docker push girthquake1/nodered'
+                 sh 'docker push girthquake1/grafana'
+                 sh 'docker push girthquake1/influxdb'
+                 
+                }
+            
+        
+        }
+        
         stage('Validate Run') {
             when {
                 beforeInput true
