@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: influx
+spec:
+  containers:
+    - name: influx
+      image: girthquake1/infrastructure_influxdb
+      ports:
+        - containerPort: 8086

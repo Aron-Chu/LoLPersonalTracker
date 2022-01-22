@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodered
+spec:
+  containers:
+    - name: nodered
+      image: girthquake1/infrastructure_nodered
+      ports:
+        - containerPort: 1880
