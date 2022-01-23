@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: grafana
+  labels:
+    component: web
+spec:
+  containers:
+    - name: grafana
+      image: girthquake1/infrastructure_grafana
+      ports:
+        - containerPort: 3000
