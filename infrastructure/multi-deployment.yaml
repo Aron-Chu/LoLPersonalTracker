@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodered-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: nodered
+          image: girthquake1/infrastructure_nodered
+          ports:
+            - containerPort: 1880
+          env:
+            - name: INFLUXDB_TOKEN
+              value: arontoken
+        - name: influxdb
+          image: girthquake1/infrastructure_influxdb
+          ports:
+            - containerPort: 8086
+          env:
+            - name: DOCKER_INFLUXDB_INIT_MODE
+              value: setup
+            - name: DOCKER_INFLUXDB_INIT_USERNAME
+              value: aron
+            - name: DOCKER_INFLUXDB_INIT_PASSWORD
+              value: SlendermanXDZ_123
+            - name: DOCKER_INFLUXDB_INIT_ORG
+              value: aron
+            - name: DOCKER_INFLUXDB_INIT_BUCKET
+              value: lolbucket
+            - name: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+              value: arontoken
+        - name: grafana
+          image: girthquake1/infrastructure_grafana
+          ports:
+            - containerPort: 3000
+          env:
+            - name: GF_SECURITY_ADMIN_USER
+              value: aron
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              value: SlendermanXDZ_123
+# kubectl rollout restart -f client-deployment.yaml
+# to redeploy with updated images

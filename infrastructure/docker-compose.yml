@@ -1,11 +1,10 @@
 version: "3.9"
-
 services:
     nodered:
         container_name: nodered
         build: ./nodered
         ports:
-            - "1880:1880"
+            - "3001:1880"
         volumes:
             - type: volume
               source: nodered-vol
@@ -40,7 +39,7 @@ services:
         environment:
             - GF_SECURITY_ADMIN_USER=aron
             - GF_SECURITY_ADMIN_PASSWORD=SlendermanXDZ_123
-            
+
 volumes:
     nodered-vol: {}
     influxdb-vol: {}
