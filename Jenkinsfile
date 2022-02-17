@@ -33,7 +33,6 @@ pipeline {
                 }
             }
         }
-        
         stage('Validate Run') {
             when {
                 beforeInput true
