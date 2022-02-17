@@ -2,7 +2,6 @@
 - name: Install Jenkins
   hosts: all
   become: yes
-  
   tasks:
     - name: download apt key Jenkins
       ansible.builtin.apt_key:
