@@ -9,7 +9,7 @@ pipeline {
          steps {
             dir('infrastructure') {
                  echo '$BRANCH_NAME'
-                 sh 'sudo docker-compose build'
+                 sh 'docker-compose build'
                 }
             }
         }
