@@ -1,5 +1,6 @@
 # Introduction
 Website riot user submission can be found here [riotAPI](https://aronblog.net/riot.html)
+Kubernetes deployment soon
 <br></br>
 This application is supposed to get the user's last 20 games and display various statistics on a dashboard and table. My first get node is supposed to return an array with the last 20
 games played. Each object in the array has the format ```"NA1_#########"```. This is then passed through two function nodes that digest the information so that the next get request
